@@ -10,34 +10,13 @@ module "ec2_instance" {
   monitoring                  = var.monitoring
   vpc_security_group_ids      = [module.vpc.private_sg]
   subnet_id                   = module.vpc.public_subnets[1]
-  ami                         = "${data.aws_ami.amazon-linux-2023.id}"
+  ami                         = "ami-0ce2cb35386fc22e9"
   associate_public_ip_address = var.associate_public_ip_address
 
   tags = {
     Name = "k8s-${each.key}"
     Owner = "vincent"
   }
-}
-
-
-data "aws_ami" "amazon-linux-2023" {
- most_recent = true
-
-  filter {
-   name   = "owner-alias"
-   values = ["amazon"]
- }
-
-
- filter {
-   name   = "name"
-   values = ["al2023-ami-2023*"]
- }
-
- filter {
-   name = "architecture"
-   values = ["x86_64"]
- }
 }
 
 module "vpc" {
