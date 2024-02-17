@@ -8,5 +8,5 @@
 
 ## Instructions: 
   1) Run the Terraform from the root Terraform directory
-  2) Use ssh via the deployed keys to access your instance shells
+  2) Use ssh via your administrated keys to access your instance shells
   3) Run the install-k8s.sh script from the root directory of each machine or as described 
